@@ -67,28 +67,6 @@
 
 \AtBeginSection{\frame{\sectionpage}}
 \AtBeginSubsection{\frame{\subsectionpage}}
-%
-%\AtBeginSection[]{
-%  \begin{frame}
-%  \vfill
-%  \centering
-%  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
-%    \usebeamerfont{title}\insertsectionhead\par%
-%  \end{beamercolorbox}
-%  \vfill
-%  \end{frame}
-%}
-%
-%\AtBeginSubsection{
-%  \begin{frame}
-%  \vfill
-%  \centering
-%  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
-%    \usebeamerfont{title}\insertsectionhead\par%
-%  \end{beamercolorbox}
-%  \vfill
-%  \end{frame}
-%}
 
 \title[Introduction au C\#]{Introduction au C\#}
 
@@ -189,7 +167,7 @@ int toto = 42;
 int tata = toto;
 float answer = 4.2;
 double mille = 1000.0;
-long beaucoups = 27972000000000;
+long beaucoup = 27972000000000;
 bool faux = false;
 bool vrai = true;
 string votay = "Test.";
@@ -665,7 +643,7 @@ class Test
     string b;
     private int c;
 }
-[...]
+
 Test obj = new Test();
 int val1 = obj.a; // OK
 string val2 = obj.b; // Erreur, b private
@@ -707,6 +685,7 @@ class Point
         y = pos_y;
     }
 }
+
 Point p = new Point(3, 4);
 Console.WriteLine(p.x); // Erreur, x et y sont private
 \end{lstlisting}
@@ -770,7 +749,7 @@ class Animal {
     }
 }
 class Chat : Animal {
-	public Chat(string nom) : base(nom) {
+    public Chat(string nom) : base(nom) {
     }
 }
 // ...
@@ -885,7 +864,7 @@ FileInfo file = new FileInfo("pown.pwd");
 \begin{lstlisting}
 namespace Toto
 {
-    //
+    // code
 }
 \end{lstlisting}
 \pause
@@ -894,10 +873,12 @@ namespace Toto
 {
     namespace Tata
     {
-        //
+        // code
     }
 }
 \end{lstlisting}
 \end{frame}
+
+\section{Questions ?}
 
 \end{document}
