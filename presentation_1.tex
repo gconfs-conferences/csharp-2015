@@ -589,7 +589,7 @@ class Point
 {
     int x;
     int y;
-    
+
     public Point(int x, int pos_y) {
         this.x = x;
         y = pos_y;
@@ -603,7 +603,8 @@ Point p2 = new Point(4, 2);
 \end{frame}
 
 \begin{frame}
-  \begin{alertblock}{Constructeur par défaut}
+\frametitle{Une methode particulière: le constructeur}
+\begin{alertblock}{Constructeur par défaut}
 Un constructeur vide ne prenant aucun paramètre est utilisé par défaut si aucun constructeur n'a été défini.
 \end{alertblock}
 \end{frame}
@@ -685,9 +686,8 @@ class Point
         y = pos_y;
     }
 }
-
 Point p = new Point(3, 4);
-Console.WriteLine(p.x); // Erreur, x et y sont private
+Console.WriteLine(p.x); // Erreur
 \end{lstlisting}
 \begin{alertblock}{Erreur de visibilité}
 Les champs x et y ne sont pas accessibles.
