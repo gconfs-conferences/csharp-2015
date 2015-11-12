@@ -31,16 +31,6 @@
 
 \usepackage{fontspec}
 \usepackage{calc,lipsum}
-%\newcommand{\lowbiglquote}[1][40]{%
-%  \setbox0=\hbox{\fontsize{#1}{0}\selectfont``}%
-%  \setlength{\dimen0}{\ht0 - \heightof{A}}%
-%  \noindent\llap{\smash{\lower\dimen0\box0 }}}
-
-%\newcommand{\lowbigrquote}[1][40]{%
-%  \setbox0=\hbox{\fontsize{#1}{0}\selectfont''}%
-%  \setlength{\dimen0}{\ht0 - \heightof{A}}%
-%  \unskip\rlap{\smash{\lower\dimen0\box0 }}}
-
 
 \defbeamertemplate{section page}{mine}[1][]{%
   \begin{centering}
@@ -101,6 +91,7 @@ GConfs
 \frametitle{Présentation}
 \begin{itemize}
 \item Inventé par Microsoft
+\pause
 \item Inspiré par Java, C++
 \pause
 \item Langage compilé
@@ -172,7 +163,7 @@ bool faux = false;
 bool vrai = true;
 string votay = "Test.";
 int[] jesuisuntableau = new int[100];
-int[] jesuisunlememetableau = jesuisuntableau;
+int[] jesuislememetableau = jesuisuntableau;
 \end{lstlisting}
 \end{center}
 \end{frame}
@@ -215,9 +206,9 @@ int answer = 20 * 2 + 2;
 //answer <- 42
 answer += 2
 //answer <- 44
-bool vrai = answer == 42;
+bool vrai = answer == 44;
 //vrai <- true
-bool faux = answer % 2 == 1;
+bool faux = (answer % 2) == 1;
 //faux <- false
 string question = "Quelle est la " + "question ?";
 // question <- Quelle est la question ?
@@ -241,7 +232,7 @@ toto[2] = 0;
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Warnings}
+\frametitle{Warning}
 \begin{lstlisting}
 int foo = 42;
 int bar = foo;
@@ -252,9 +243,9 @@ Que vaut foo ?
 Réponse: 42
 \pause
 \begin{lstlisting}
-int foo[] = new int[2];
+int[] foo = new int[2];
 foo[0] = 42;
-int bar[] = foo;
+int[] bar = foo;
 bar[0] = 21;
 \end{lstlisting}
 Que vaut foo[0] ?
@@ -263,7 +254,7 @@ Réponse: 21
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Déclaration de fonctions}
+\frametitle{Déclaration de fonction}
 \begin{lstlisting}
 <type> <nom>(<type1> <param1>, <type2> <param2>)
 {
@@ -347,13 +338,13 @@ if (year % 2 == 1) {
 \begin{lstlisting}
 switch (<variable>){
     case <cas 1>:
-        <insctructions>
+        <instructions>
         break;
     case <cas 2>:
-        <insctructions>
+        <instructions>
         break;
     default:
-        <insctructions>
+        <instructions>
         break;
 }
 \end{lstlisting}
@@ -385,8 +376,8 @@ while(<condition>) {
 }
 
 do {
-    instructions>
-} while(<conditions>);
+    <instructions>
+} while(<condition>);
 \end{lstlisting}
 \end{frame}
 
@@ -433,7 +424,7 @@ for (int i = 0; i < array.Length; ++i) {
 \end{lstlisting}
 \end{frame}
 
-\section{Programmation orientée object}
+\section{Programmation orientée objet}
 
 \subsection{Présentation}
 
@@ -470,7 +461,7 @@ class Test
 \frametitle{Une classe}
 \begin{itemize}
 \item Une classe A : "Plan" décrivant des méthodes et des champs.
-\item Une instance de A : Object utilisable, ayant la forme et la structure définies par A.
+\item Une instance de A : Objet utilisable, ayant la forme et la structure définies par A.
 \end{itemize}
 \end{frame}
 
@@ -734,9 +725,9 @@ Une classe (fille) peut hériter d'une autre classe (mère), cela signifie que
 \item Une instance fille peut redéfinir certaines méthodes de la classe mère
 \end{itemize}
 \pause
-Cela permet de factoriser du code
+Cela permet de factoriser du code\\
 \pause
-La relation mère-fille peut se définir comme: la fille est-une mère
+La relation mère-fille peut se définir comme: la fille est une mère.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -752,36 +743,7 @@ class Chat : Animal {
     public Chat(string nom) : base(nom) {
     }
 }
-// ...
-Animal noisette = new Chat("Noisette");
-Animal[] ferme = new Animal[10];
-ferme[0] = noisette;
-ferme[1] = new Vache("Lucette");
-ferme[2] = new Canard("Saturnin");
-\end{lstlisting}
-\end{frame}
 
-
-\begin{frame}[fragile]
-\frametitle{Un héritage classique}
-\begin{lstlisting}
-class Animal {
-    string nom;
-    public Animal(string nom) {
-        this.nom = nom;
-    }
-}
-
-class Chat : Animal {
-    public Chat(string nom) : base(nom) {
-    }
-}
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Un héritage classique}
-\begin{lstlisting}
 Animal noisette = new Chat("Noisette");
 Animal[] ferme = new Animal[10];
 ferme[0] = noisette;
@@ -805,7 +767,7 @@ noisette.Miaule(); //OK
 noisette.GetNom(); //OK
 Animal noisette_bis = noisette;
 noisette_bis.GetNom(); //OK
-noisette_bis.Milaue(); //KO
+noisette_bis.Miaule(); //KO
 \end{lstlisting}
 \end{frame}
 
@@ -819,7 +781,7 @@ class Animal {
     }
 }
 class Chat : Animal {
-     override void SHout() {
+     override void Shout() {
          Console.Writeline("Miaou !");
      }
 }
@@ -835,16 +797,16 @@ bob.Shout(); //Miaou
 \begin{frame}
 \frametitle{Première approche}
 \begin{itemize}
-\item Les namespaces sont des "boites" dans lesquelles on trouve un ensemble de classes ayant une relation entre-elles (calcul, gestion du réseau, des fichiers...).
+\item Les namespaces sont des "boites" dans lesquelles on trouve un ensemble de classes ayant une relation entre elles (calcul, gestion du réseau, des fichiers...).
 \item Les namespaces peuvent s'imbriquer.
-\item Il existent une visibilité entre les namespaces, ainsi on peut déclarer une classe publique (elle peut être vu a l'exterieur du namespace) ou privée (elle n'est vu qu'a l'interieur).
+\item Il existe une visibilité entre les namespaces, ainsi on peut déclarer une classe publique (elle peut être vue à l'exterieur du namespace) ou privée (elle n'est vue qu'a l'interieur).
 
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Utiliser un namespace}
-Pour accéder à une classe présente dans un namespace, deux choix s'offre à nous.
+Pour accéder à une classe présente dans un namespace, deux choix s'offrent à nous.
 \begin{lstlisting}
 System.IO.FileInfo file = 
     new System.IO.FileInfo("pown.pdf");
@@ -855,7 +817,7 @@ using System.IO;
 
 //...
 
-FileInfo file = new FileInfo("pown.pwd");
+FileInfo file = new FileInfo("pown.pdf");
 \end{lstlisting}
 \end{frame}
 
